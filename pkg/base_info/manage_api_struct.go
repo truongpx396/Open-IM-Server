@@ -72,7 +72,13 @@ type ManagementBatchSendMsgReq struct {
 type ManagementBatchSendMsgResp struct {
 	CommResp
 	Data struct {
-		ResultList   []server_api_params.UserSendMsgResp `json:"resultList"`
+		ResultList   []*SingleReturnResult `json:"resultList"`
 		FailedIDList []string
 	} `json:"data"`
+}
+type SingleReturnResult struct {
+	ServerMsgID string `json:"serverMsgID"`
+	ClientMsgID string `json:"clientMsgID"`
+	SendTime    int64  `json:"sendTime"`
+	RecvID      string `json:"recvID" `
 }

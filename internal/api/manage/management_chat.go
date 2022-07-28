@@ -313,10 +313,11 @@ func ManagementBatchSendMsg(c *gin.Context) {
 			resp.Data.FailedIDList = append(resp.Data.FailedIDList, recvID)
 			continue
 		}
-		resp.Data.ResultList = append(resp.Data.ResultList, server_api_params.UserSendMsgResp{
+		resp.Data.ResultList = append(resp.Data.ResultList, &api.SingleReturnResult{
 			ServerMsgID: rpcResp.ServerMsgID,
 			ClientMsgID: rpcResp.ClientMsgID,
 			SendTime:    rpcResp.SendTime,
+			RecvID:      recvID,
 		})
 	}
 
