@@ -53,8 +53,8 @@ func (ws *WServer) msgParse(conn *UserConn, binaryMsg []byte) {
 		log.NewInfo(m.OperationID, "pullMsgBySeqListReq ", m.SendID, m.MsgIncr, m.ReqIdentifier)
 		ws.pullMsgBySeqListReq(conn, &m)
 	case constant.WsLogoutMsg:
-		log.NewInfo(m.OperationID, "conn.Close()", m.SendID, m.MsgIncr, m.ReqIdentifier)
-	//	conn.Close()
+		log.NewInfo(m.OperationID, "userLogoutReq", m.SendID, m.MsgIncr, m.ReqIdentifier)
+		ws.userLogoutReq(conn, &m)
 	default:
 		log.Error(m.OperationID, "ReqIdentifier failed ", m.SendID, m.MsgIncr, m.ReqIdentifier)
 	}
@@ -350,4 +350,18 @@ func SetTokenKicked(userID string, platformID int, operationID string) {
 		log.Error(operationID, "SetTokenMapByUidPid failed ", err.Error(), userID, constant.PlatformIDToName(platformID))
 		return
 	}
+}
+func (ws *WServer) userLogoutResp(conn *UserConn, m *Req) {
+	mReply := Resp{
+		ReqIdentifier: m.ReqIdentifier,
+		MsgIncr:       m.MsgIncr,
+		OperationID:   m.OperationID,
+	}
+	ws.sendMsg(conn, mReply)
+	_ = conn.Close()
+}
+
+func (ws *WServer) userLogoutReq(conn *UserConn, m *Req) {
+	log.NewInfo(m.OperationID, "Ws call success to userLogoutReq start", m.SendID, m.ReqIdentifier, m.MsgIncr, string(m.Data))
+	ws.userLogoutResp(conn, m)
 }
