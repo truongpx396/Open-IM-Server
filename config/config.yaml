@@ -122,15 +122,15 @@ credential: #腾讯cos，发送图片、视频、文件时需要，请自行申�
     storageTime: 50 #文件在minio中保存的时间
     isDistributedMod: false # 是否分布式多硬盘部署 默认docker-compose中为false
   ali: # ali oss
-    regionID: "oss-cn-beijing"
-    accessKeyID: ""
-    accessKeySecret: ""
-    stsEndpoint: "sts.cn-beijing.aliyun.com"
-    ossEndpoint: "oss-cn-beijing.aliyuncs.com"
-    bucket: "bucket1"
-    finalHost: "http://bucket1.oss-cn-beijing.aliyuncs.com"
-    stsDurationSeconds: 3600
-    OssRoleArn: "acs:ram::xxx:role/xxx"
+    regionID: 
+    accessKeyID:  
+    accessKeySecret:  
+    stsEndpoint: 
+    ossEndpoint:  
+    bucket:  
+    finalHost:  
+    stsDurationSeconds:  
+    OssRoleArn: 
 
 dtm:
   serverURL: 127.0.0.1:10007
@@ -203,20 +203,20 @@ longconnsvr:
 push:
   tpns: #腾讯推送，暂未测试 暂不要使用
     ios:
-      accessID: 1600018281
-      secretKey: 3cd68a77a95b89e5089a1aca523f318f
+      accessID:  
+      secretKey:  
     android:
       accessID: 111
       secretKey: 111
     enable: false
   jpns: #极光推送 在极光后台申请后，修改以下四项，必须修改
-    appKey: cf47465a368f24c659608e7e
-    masterSecret: 02204efe3f3832947a236ee5
-    pushUrl: "https://api.jpush.cn/v3/push"
-    pushIntent: "intent:#Intent;component=io.openim.app.enterprisechat/io.openim.app.enterprisechat.MainActivity;end"
+    appKey:  
+    masterSecret:  
+    pushUrl:  
+    pushIntent:  
     enable: true
   getui:  #个推推送
-    pushUrl: "https://restapi.getui.com/v2/$appId"
+    pushUrl:  
     masterSecret: ""
     appKey: ""
     intent: ""
@@ -224,7 +224,7 @@ push:
     channelID: ""
     channelName: ""
   fcm:  #firebase cloud message 消息推送
-    serviceAccount: "openim-5c6c0-firebase-adminsdk-ppwol-8765884a78.json" #帐号文件，此处需要改修配置，并且这个文件放在 config目录下
+    serviceAccount:  #帐号文件，此处需要改修配置，并且这个文件放在 config目录下
     enable: false
 
 
