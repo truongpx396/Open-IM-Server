@@ -27,7 +27,6 @@ By deployment of the Open-IM-Server on the customer's server, developers can int
 
 ## Community
 
-- Join the Telegram-OpenIM group: https://t.me/joinchat/zSJLPaHBNLZmODI1
 - 中文官网访问这里：[Open-IM中文开发文档](https://doc.rentsoft.cn/)
 
 ## Quick start
