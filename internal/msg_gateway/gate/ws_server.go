@@ -147,6 +147,7 @@ func (ws *WServer) MultiTerminalLoginCheckerWithLock(uid string, platformID int,
 	defer rwLock.Unlock()
 	log.NewInfo(operationID, utils.GetSelfFuncName(), " rpc args: ", uid, platformID, token)
 	switch config.Config.MultiLoginPolicy {
+	case constant.DefalutNotKick:
 	case constant.AllLoginButSameTermKick:
 		if oldConnMap, ok := ws.wsUserToConn[uid]; ok { // user->map[platform->conn]
 			if oldConn, ok := oldConnMap[platformID]; ok {
@@ -197,6 +198,7 @@ func (ws *WServer) MultiTerminalLoginCheckerWithLock(uid string, platformID int,
 
 func (ws *WServer) MultiTerminalLoginChecker(uid string, platformID int, newConn *UserConn, token string, operationID string) {
 	switch config.Config.MultiLoginPolicy {
+	case constant.DefalutNotKick:
 	case constant.AllLoginButSameTermKick:
 		if oldConnMap, ok := ws.wsUserToConn[uid]; ok { // user->map[platform->conn]
 			if oldConn, ok := oldConnMap[platformID]; ok {
@@ -361,19 +363,19 @@ func (ws *WServer) getUserAllCons(uid string) map[int]*UserConn {
 	return nil
 }
 
-//func (ws *WServer) getUserUid(conn *UserConn) (uid string, platform int) {
-//	rwLock.RLock()
-//	defer rwLock.RUnlock()
+//	func (ws *WServer) getUserUid(conn *UserConn) (uid string, platform int) {
+//		rwLock.RLock()
+//		defer rwLock.RUnlock()
 //
-//	if stringMap, ok := ws.wsConnToUser[conn]; ok {
-//		for k, v := range stringMap {
-//			platform = k
-//			uid = v
+//		if stringMap, ok := ws.wsConnToUser[conn]; ok {
+//			for k, v := range stringMap {
+//				platform = k
+//				uid = v
+//			}
+//			return uid, platform
 //		}
-//		return uid, platform
+//		return "", 0
 //	}
-//	return "", 0
-//}
 func (ws *WServer) headerCheck(w http.ResponseWriter, r *http.Request, operationID string) bool {
 	status := http.StatusUnauthorized
 	query := r.URL.Query()
