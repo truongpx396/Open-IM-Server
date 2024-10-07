@@ -68,6 +68,7 @@ pipeline {
                 //     make test-user
                 //   }
                   echo 'UNIT TEST EXECUTION STARTED'
+                  sh 'make --version'
                 //   sh "sudo apt-get install build-essential"
                   sh "make test-user"
 
