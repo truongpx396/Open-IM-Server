@@ -59,15 +59,17 @@ pipeline {
           }
         }
 
-        stage("Unit-Test") {
+       
+
+        stage('Unit-Test') {
             steps {
-                //   script {
-                //     echo 'UNIT TEST EXECUTION STARTED.'
-                //     make test-user
-                //   }
-                  echo 'UNIT TEST EXECUTION STARTED'
-                  sh 'sudo apt-get install build-essential'
-                  sh 'make test-user'
+                  script {
+                    echo "UNIT TEST EXECUTION STARTED."
+                    make test-user
+                  }
+                //   echo 'UNIT TEST EXECUTION STARTED'
+                //   sh 'sudo apt-get install build-essential'
+                //   sh 'make test-user'
 
                 //   sh """
                 //      sudo apt-get install build-essential
