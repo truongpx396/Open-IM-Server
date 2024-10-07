@@ -6,11 +6,12 @@ import (
 	"testing"
 
 	pbuser "github.com/OpenIMSDK/protocol/user"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/mock"
+
 	"github.com/openimsdk/open-im-server/v3/internal/rpc/user/mocks"
 	"github.com/openimsdk/open-im-server/v3/internal/rpc/user/service"
 	"github.com/openimsdk/open-im-server/v3/pkg/common/db/table/relation"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/mock"
 )
 
 var mockUserDatabase = &mocks.UserDatabase{}
