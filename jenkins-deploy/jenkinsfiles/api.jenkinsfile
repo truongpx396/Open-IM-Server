@@ -61,10 +61,15 @@ pipeline {
 
         stage("Unit-Test") {
             steps {
-                  script {
-                    echo 'UNIT TEST EXECUTION STARTED'
-                    make test-user
-                  }
+                //   script {
+                //     echo 'UNIT TEST EXECUTION STARTED'
+                //     make test-user
+                //   }
+
+                  sh """
+                     echo `UNIT TEST EXECUTION STARTED`
+                     make test-user
+                  """
             }
         }
 
