@@ -5,6 +5,11 @@ pipeline {
         //     label 'jnlp-slave'
         // }
     // }
+
+    tools {
+      go 'golang'
+    }
+
 	environment {
 	    JOB_ENV = "openim-dev" // namespace
 	    DEPLOYMENT_NAME = "api"  // k8s deploy name
