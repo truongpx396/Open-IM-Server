@@ -31,7 +31,7 @@ func TestGetDesignateUsers(t *testing.T) {
 	res, err := uServer.GetDesignateUsers(ctx, &pbuser.GetDesignateUsersReq{UserIDs: []string{}})
 
 	assert.NoError(t, err)
-	assert.Equal(t, "99", res.UsersInfo[0].UserID)
+	assert.Equal(t, "991", res.UsersInfo[0].UserID)
 
 	t.Logf("success")
 }
