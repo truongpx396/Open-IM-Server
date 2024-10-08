@@ -7,7 +7,7 @@ pipeline {
     // }
 
     tools {
-      go 'go1.21.0'
+      go 'go1.21'
     }
 
 	environment {
