@@ -5,6 +5,11 @@ pipeline {
         //     label 'jnlp-slave'
         // }
     // }
+
+    tools {
+      go 'go1.21'
+    }
+
 	environment {
 	    JOB_ENV = "openim-dev" // namespace
 	    DEPLOYMENT_NAME = "api"  // k8s deploy name
@@ -59,17 +64,25 @@ pipeline {
           }
         }
 
-        stage("Unit-Test") {
+       
+
+        stage('Unit-Test') {
             steps {
                 //   script {
-                //     echo 'UNIT TEST EXECUTION STARTED'
+                //     echo "UNIT TEST EXECUTION STARTED."
                 //     make test-user
                 //   }
+                //   sh 'which make'
+                  echo 'UNIT TEST EXECUTION STARTED'
+                //   sh 'make --version'
+                //   sh "sudo apt-get install build-essential"
+                  sh "make test-user"
 
-                  sh """
-                     echo `UNIT TEST EXECUTION STARTED`
-                     make test-user
-                  """
+                //   sh """
+                //      sudo apt-get install build-essential
+                //      echo `UNIT TEST EXECUTION STARTED`
+                //      make test-user
+                //   """
             }
         }
 
